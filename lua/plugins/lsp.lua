@@ -120,7 +120,8 @@ return {
 		--  See `:help lsp-config` for information about keys and how to configure
 		---@type table<string, vim.lsp.Config>
 		local servers = {
-			ts_ls = {},
+			biome = {},
+			-- ts_ls = {},
 			-- clangd = {},
 			-- gopls = {},
 			-- pyright = {},
@@ -179,6 +180,7 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			-- You can add other tools here that you want Mason to install
+			"biome",
 			"prettierd",
 			"prettier",
 		})

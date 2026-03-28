@@ -6,6 +6,10 @@ return {
 		view_options = {
 			show_hidden = true,
 		},
+		float = {
+			max_width = 0.3,
+			preview_split = "right",
+		},
 	},
 	-- Optional dependencies
 	dependencies = { { "nvim-mini/mini.icons", opts = {} } },
