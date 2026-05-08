@@ -26,6 +26,14 @@ return {
 		},
 
 		{
+			"<leader>fb",
+			function()
+				require("fzf-lua").buffers()
+			end,
+			desc = "[F]ind [B]uffers",
+		},
+
+		{
 			"<leader>fg",
 			function()
 				require("fzf-lua").live_grep()

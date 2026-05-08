@@ -120,8 +120,7 @@ return {
 		--  See `:help lsp-config` for information about keys and how to configure
 		---@type table<string, vim.lsp.Config>
 		local servers = {
-			biome = {},
-			-- ts_ls = {},
+			ts_ls = {},
 			-- clangd = {},
 			-- gopls = {},
 			-- pyright = {},
@@ -132,6 +131,55 @@ return {
 			--
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
+			--
+
+			eslint = {
+				settings = {
+					-- Jeśli używasz flat config (eslint.config.js), odkomentuj:
+					-- experimental = { useFlatConfig = true },
+					rulesCustomizations = {},
+					run = "onType", -- lub "onSave" jeśli wolisz
+					problems = { shortenToSingleLine = false },
+					-- Wyłącza formatowanie po stronie ESLint LSP — prettier rządzi
+					format = false,
+				},
+				-- Podpina code actions tylko do plików JS/TS/JSX/TSX
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+				},
+			},
+
+			tailwindcss = {
+				filetypes = {
+					"html",
+					"css",
+					"scss",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+					"svelte",
+				},
+				settings = {
+					tailwindCSS = {
+						classAttributes = { "class", "className", "ngClass", "class:list" },
+						lint = {
+							cssConflict = "warning",
+							invalidApply = "error",
+							invalidScreen = "error",
+							invalidVariant = "error",
+							invalidConfigPath = "error",
+						},
+						validate = true,
+					},
+				},
+			},
 
 			stylua = {}, -- Used to format Lua code
 
@@ -180,7 +228,7 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			-- You can add other tools here that you want Mason to install
-			"biome",
+			"eslint_d",
 			"prettierd",
 			"prettier",
 		})
